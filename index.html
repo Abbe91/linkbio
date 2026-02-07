@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary Meta Tags -->
+    <title>Abdullah - Full-Stack Developer & AI Builder</title>
+    <meta name="title" content="Abdullah - Full-Stack Developer & AI Builder">
+    <meta name="description" content="Programmer using AI daily to build real products. Explore DigitalTech, Resonam, and Fakturify - Building businesses with code + AI.">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yoursite.com/">
+    <meta property="og:title" content="Abdullah - Full-Stack Developer & AI Builder">
+    <meta property="og:description" content="Programmer using AI daily to build real products. Building businesses with code + AI.">
+    <meta property="og:image" content="https://yoursite.com/og-image.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://yoursite.com/">
+    <meta property="twitter:title" content="Abdullah - Full-Stack Developer & AI Builder">
+    <meta property="twitter:description" content="Programmer using AI daily to build real products. Building businesses with code + AI.">
+    <meta property="twitter:image" content="https://yoursite.com/og-image.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #581c87 50%, #0f172a 100%);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes particleFloat {
+            0% {
+                transform: translateY(100vh) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(50px);
+                opacity: 0;
+            }
+        }
+
+        @keyframes shine {
+            0% {
+                transform: translateX(-100%) translateY(-100%) rotate(45deg);
+            }
+            100% {
+                transform: translateX(100%) translateY(100%) rotate(45deg);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 0.5;
+            }
+            50% {
+                opacity: 0.3;
+            }
+        }
+
+        /* Glow Effects */
+        .glow-1 {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 384px;
+            height: 384px;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.2) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(60px);
+            animation: pulse 3s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        .glow-2 {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 320px;
+            height: 320px;
+            background: radial-gradient(circle, rgba(236, 72, 153, 0.2) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(60px);
+            animation: pulse 3s ease-in-out infinite;
+            animation-delay: 1.5s;
+            pointer-events: none;
+        }
+
+        /* Particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            animation: particleFloat linear infinite;
+        }
+
+        /* Container */
+        .container {
+            position: relative;
+            z-index: 10;
+            max-width: 448px;
+            margin: 0 auto;
+            padding: 32px 20px;
+        }
+
+        @media (min-width: 640px) {
+            .container {
+                padding: 48px 20px;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            margin-bottom: 32px;
+            animation: fadeIn 0.8s ease-out 0.2s backwards;
+        }
+
+        .profile-wrapper {
+            display: inline-block;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .profile-ring {
+            width: 112px;
+            height: 112px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
+            padding: 4px;
+            box-shadow: 0 20px 60px rgba(168, 85, 247, 0.4);
+        }
+
+        .profile-inner {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: #0f172a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            font-weight: 700;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-inner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transform: rotate(45deg);
+            animation: shine 3s infinite;
+        }
+
+        .profile-photo {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .name {
+            font-size: 28px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 8px;
+            letter-spacing: -0.025em;
+        }
+
+        @media (min-width: 640px) {
+            .name {
+                font-size: 36px;
+            }
+        }
+
+        .title {
+            color: #d8b4fe;
+            font-weight: 500;
+            margin-bottom: 12px;
+            font-size: 16px;
+        }
+
+        .bio {
+            color: #94a3b8;
+            font-size: 14px;
+            max-width: 320px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Contact Buttons */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 32px;
+            animation: fadeIn 0.8s ease-out 0.4s backwards;
+        }
+
+        .contact-btn {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 16px;
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            text-decoration: none;
+            display: block;
+        }
+
+        .contact-btn:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-4px);
+        }
+
+        .contact-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            margin-bottom: 8px;
+            font-size: 20px;
+            box-shadow: 0 8px 24px;
+        }
+
+        .contact-icon.whatsapp {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            box-shadow: 0 8px 24px rgba(16, 185, 129, 0.5);
+        }
+
+        .contact-icon.email {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            box-shadow: 0 8px 24px rgba(59, 130, 246, 0.5);
+        }
+
+        .contact-label {
+            color: white;
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 2px;
+        }
+
+        .contact-subtext {
+            color: #94a3b8;
+            font-size: 12px;
+        }
+
+        .tooltip {
+            position: absolute;
+            background: #10b981;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            top: -45px;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            z-index: 50;
+        }
+
+        .tooltip::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-top: 6px solid #10b981;
+        }
+
+        .tooltip.show {
+            opacity: 1;
+        }
+
+        /* Portal Cards */
+        .portals {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .portal-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 24px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            display: block;
+            animation: fadeIn 0.8s ease-out backwards;
+        }
+
+        .portal-card:nth-child(1) {
+            animation-delay: 0.6s;
+        }
+
+        .portal-card:nth-child(2) {
+            animation-delay: 0.75s;
+        }
+
+        .portal-card:nth-child(3) {
+            animation-delay: 0.9s;
+        }
+
+        @media (min-width: 640px) {
+            .portal-card {
+                padding: 28px;
+            }
+        }
+
+        .portal-card.primary {
+            padding: 28px;
+            border: 2px solid rgba(168, 85, 247, 0.3);
+        }
+
+        @media (min-width: 640px) {
+            .portal-card.primary {
+                padding: 32px;
+            }
+        }
+
+        .portal-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-8px);
+        }
+
+        .portal-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 16px;
+            margin-bottom: 16px;
+            font-size: 28px;
+            box-shadow: 0 12px 32px;
+        }
+
+        .portal-card .portal-icon {
+            width: 56px;
+            height: 56px;
+        }
+
+        .portal-card.primary .portal-icon {
+            width: 64px;
+            height: 64px;
+        }
+
+        .portal-icon.purple {
+            background: linear-gradient(135deg, #a855f7 0%, #6366f1 100%);
+            box-shadow: 0 12px 32px rgba(168, 85, 247, 0.5);
+        }
+
+        .portal-icon.pink {
+            background: linear-gradient(135deg, #ec4899 0%, #f43f5e 100%);
+            box-shadow: 0 12px 32px rgba(236, 72, 153, 0.5);
+        }
+
+        .portal-icon.cyan {
+            background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);
+            box-shadow: 0 12px 32px rgba(6, 182, 212, 0.5);
+        }
+
+        .portal-title {
+            color: white;
+            font-weight: 700;
+            margin-bottom: 8px;
+            font-size: 20px;
+        }
+
+        .portal-card.primary .portal-title {
+            font-size: 24px;
+        }
+
+        .portal-subtitle {
+            color: #cbd5e1;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+
+        .portal-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .portal-card:hover .portal-button {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(4px);
+        }
+
+        .arrow-icon {
+            width: 16px;
+            height: 16px;
+            transition: transform 0.3s ease;
+        }
+
+        .portal-card:hover .arrow-icon {
+            transform: translateX(4px);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            color: #64748b;
+            font-size: 12px;
+            animation: fadeIn 0.8s ease-out 1.2s backwards;
+        }
+
+        .footer a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: #cbd5e1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Glow Effects -->
+    <div class="glow-1"></div>
+    <div class="glow-2"></div>
+
+    <!-- Particles -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Hero Section -->
+        <div class="hero">
+            <div class="profile-wrapper">
+                <div class="profile-ring">
+                    <div class="profile-inner" id="profileInner">
+                        <span id="initials">AA</span>
+                        <!-- To use a photo, uncomment below and set the src -->
+                        <!-- <img src="your-photo.jpg" alt="Abdullah" class="profile-photo"> -->
+                    </div>
+                </div>
+            </div>
+            
+            <h1 class="name">Abdullah</h1>
+            <p class="title">Full-Stack Developer • AI Builder</p>
+            <p class="bio">Programmer using AI daily to build real products — Building businesses with code + AI</p>
+        </div>
+
+        <!-- Contact Buttons -->
+        <div class="contact-grid">
+            <a href="https://wa.me/46729210561" class="contact-btn" id="whatsappBtn" target="_blank" rel="noopener noreferrer">
+                <div class="tooltip" id="whatsappTooltip">Copied!</div>
+                <div class="contact-icon whatsapp">💬</div>
+                <div class="contact-label">WhatsApp</div>
+                <div class="contact-subtext">Quick message</div>
+            </a>
+            
+            <a href="mailto:info@digitaltech.se" class="contact-btn" target="_self">
+                <div class="contact-icon email">✉️</div>
+                <div class="contact-label">Email</div>
+                <div class="contact-subtext">Business inquiries</div>
+            </a>
+        </div>
+
+        <!-- Portal Cards -->
+        <div class="portals">
+            <!-- DigitalTech (Primary) -->
+            <a href="#" class="portal-card primary" data-url="https://digitaltech.se/" data-name="digitaltech">
+                <div class="portal-icon purple">🌐</div>
+                <h2 class="portal-title">DigitalTech</h2>
+                <p class="portal-subtitle">Websites • SEO • Digital Marketing</p>
+                <div class="portal-button">
+                    <span>Visit DigitalTech</span>
+                    <svg class="arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                </div>
+            </a>
+
+            <!-- Resonam -->
+            <a href="#" class="portal-card" data-url="https://resonam.com/" data-name="resonam">
+                <div class="portal-icon pink">🧠</div>
+                <h2 class="portal-title">Resonam</h2>
+                <p class="portal-subtitle">AI Agents • Autonomous Intelligence Lab</p>
+                <div class="portal-button">
+                    <span>Visit Resonam</span>
+                    <svg class="arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                </div>
+            </a>
+
+            <!-- Fakturify -->
+            <a href="#" class="portal-card" data-url="https://fakturify.se/" data-name="fakturify">
+                <div class="portal-icon cyan">📊</div>
+                <h2 class="portal-title">Fakturify</h2>
+                <p class="portal-subtitle">Smart Invoicing • Accounting Tools for Sweden</p>
+                <div class="portal-button">
+                    <span>Visit Fakturify</span>
+                    <svg class="arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                </div>
+            </a>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>Built by Abdullah • Powered by AI</p>
+            <!-- Uncomment if you have a privacy policy -->
+            <!-- <a href="/privacy">Privacy Policy</a> -->
+        </div>
+    </div>
+
+    <!-- Analytics Placeholder (Uncomment and add your tracking IDs) -->
+    <!--
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    </script>
+    -->
+    
+    <!-- Meta Pixel Placeholder -->
+    <!--
+    <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', 'YOUR_PIXEL_ID');
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+        src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"
+    /></noscript>
+    -->
+
+    <script>
+        // ========================
+        // CONFIGURATION
+        // ========================
+        const CONFIG = {
+            utm: {
+                source: 'tiktok',
+                medium: 'bio',
+                campaign: 'profile'
+            }
+        };
+
+        // ========================
+        // UTILITY FUNCTIONS
+        // ========================
+        function addUTMParams(url) {
+            const separator = url.includes('?') ? '&' : '?';
+            const params = new URLSearchParams({
+                utm_source: CONFIG.utm.source,
+                utm_medium: CONFIG.utm.medium,
+                utm_campaign: CONFIG.utm.campaign
+            }).toString();
+            return url + separator + params;
+        }
+
+        function trackEvent(eventName, params) {
+            // Uncomment when analytics is enabled
+            // if (typeof gtag !== 'undefined') {
+            //     gtag('event', eventName, params);
+            // }
+            console.log('Event:', eventName, params);
+        }
+
+        // ========================
+        // PARTICLE BACKGROUND
+        // ========================
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 25;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                particle.style.animationDelay = Math.random() * 5 + 's';
+                
+                const size = Math.random() * 2 + 1;
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // ========================
+        // WHATSAPP TOOLTIP
+        // ========================
+        document.getElementById('whatsappBtn').addEventListener('click', function(e) {
+            const tooltip = document.getElementById('whatsappTooltip');
+            tooltip.classList.add('show');
+            
+            trackEvent('contact_click', { contact_type: 'whatsapp' });
+            
+            setTimeout(() => {
+                tooltip.classList.remove('show');
+            }, 2000);
+        });
+
+        // ========================
+        // PORTAL CARDS UTM TRACKING
+        // ========================
+        document.querySelectorAll('.portal-card').forEach(card => {
+            card.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const url = this.getAttribute('data-url');
+                const name = this.getAttribute('data-name');
+                const urlWithUTM = addUTMParams(url);
+                
+                trackEvent('portal_click', { portal_name: name });
+                
+                window.open(urlWithUTM, '_blank', 'noopener,noreferrer');
+            });
+        });
+
+        // ========================
+        // INITIALIZE
+        // ========================
+        window.addEventListener('load', function() {
+            createParticles();
+            trackEvent('page_view', { page_title: 'Link in Bio' });
+        });
+    </script>
+</body>
+</html>
